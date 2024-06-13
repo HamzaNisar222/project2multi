@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\api\ServiceController;
 use App\Http\Controllers\api\SubServicesController;
+use App\Http\Controllers\api\ServiceRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,8 @@ Route::middleware(['auth.token', 'role:admin'])->group(function() {
 });
 
 // Route with role check (required 'vendor' role)
-Route::middleware(['auth.token', 'role:vendor'])->group(function() {
+Route::middleware(['auth.token', 'role:user'])->group(function() {
     //Route for the vendor to requet for the services
+    Route::post('/service-registrations', [ServiceRegistrationController::class, 'create']);
 });
 

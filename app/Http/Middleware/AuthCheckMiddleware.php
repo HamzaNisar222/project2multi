@@ -35,7 +35,6 @@ class AuthCheckMiddleware
         }else{
             echo "token is ok";
         }
-
         // Attach authenticated user to the request
         $request->merge(['user' => $user]);
 
